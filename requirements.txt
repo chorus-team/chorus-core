@@ -1,0 +1,6 @@
+# chorus dependencies
+pyyaml
+ipaddress
+pexpect>=4.6.0
+pbr>=2.0.0
+requests
