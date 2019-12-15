@@ -97,41 +97,41 @@ class LinuxClient(object):
             pasv="",
             timeout=600):
         """transfer file with ftp. The client side"""
-        if cmd is "get":
-            if ftp_file is not "":
-                if lcd is not "" and cd is not "" and local_file is not "":
+        if cmd == "get":
+            if ftp_file != "":
+                if lcd != "" and cd != "" and local_file != "":
                     cmd = cmd + " " + cd + "/" + ftp_file + " " + lcd + "/" + local_file
-                elif lcd is "" and cd is not "" and local_file is not "":
+                elif lcd == "" and cd != "" and local_file != "":
                     cmd = cmd + " " + cd + "/" + " " + local_file
-                elif lcd is not "" and cd is "" and local_file is not "":
+                elif lcd != "" and cd == "" and local_file != "":
                     cmd = cmd + " " + ftp_file + " "
-                elif lcd is not "" and cd is not "" and local_file is "":
+                elif lcd != "" and cd != "" and local_file == "":
                     cmd = cmd + " " + cd + "/" + ftp_file + " " + lcd + "/" + ftp_file
-                elif lcd is not "" and cd is "" and local_file is "":
+                elif lcd != "" and cd == "" and local_file == "":
                     cmd = cmd + " " + ftp_file + "./" + ftp_file
-                elif lcd is "" and cd is "" and local_file is not "":
+                elif lcd == "" and cd == "" and local_file != "":
                     cmd = cmd + " " + ftp_file + " " + local_file
-                elif lcd is "" and cd is not "" and local_file is "":
+                elif lcd == "" and cd != "" and local_file == "":
                     cmd = cmd + " " + cd + "/" + ftp_file
-                elif lcd is "" and cd is "" and local_file is "":
+                elif lcd == "" and cd == "" and local_file == "":
                     cmd = cmd + " " + ftp_file
-        elif cmd is "put":
-            if local_file is not "":
-                if lcd is not "" and cd is not "" and ftp_file is not "":
+        elif cmd == "put":
+            if local_file != "":
+                if lcd != "" and cd != "" and ftp_file != "":
                     cmd = cmd + " " + lcd + "/" + local_file + " " + cd + "/" + ftp_file
-                elif lcd is "" and cd is not "" and ftp_file is not "":
+                elif lcd == "" and cd != "" and ftp_file != "":
                     cmd = cmd + " " + local_file + " " + cd + "/" + ftp_file
-                elif lcd is not "" and cd is "" and ftp_file is not "":
+                elif lcd != "" and cd == "" and ftp_file != "":
                     cmd = cmd + " " + lcd + "/" + local_file + " " + ftp_file
-                elif lcd is not "" and cd is not "" and ftp_file is "":
+                elif lcd != "" and cd != "" and ftp_file == "":
                     cmd = cmd + " " + lcd + "/" + local_file + " " + cd + "/" + local_file
-                elif lcd is not "" and cd is "" and ftp_file is "":
+                elif lcd != "" and cd == "" and ftp_file == "":
                     cmd = cmd + " " + lcd + "/" + local_file
-                elif lcd is "" and cd is "" and ftp_file is not "":
+                elif lcd == "" and cd == "" and ftp_file != "":
                     cmd = cmd + " " + local_file + " " + ftp_file
-                elif lcd is "" and cd is not "" and ftp_file is "":
+                elif lcd == "" and cd != "" and ftp_file == "":
                     cmd = cmd + " " + local_file + " " + cd + "/" + local_file
-                elif lcd is "" and cd is "" and ftp_file is "":
+                elif lcd == "" and cd == "" and ftp_file == "":
                     cmd = cmd + " " + local_file + " " + local_file
         if pasv is None:
             pasv = "1"
@@ -158,7 +158,7 @@ class LinuxClient(object):
             return False
         else:
             self.cmd("binary", prompt=ftp_prompt)
-            if pasv is "1":
+            if pasv == "1":
                 self.cmd("passive", prompt=ftp_prompt)
             self.log.info("Now, begin to transmit the ftp file")
             myftp = self.cmd(cmd, prompt=ftp_prompt, timeout=timeout)
@@ -221,7 +221,7 @@ class LinuxClient(object):
         print("to_host\n\n")
 
         tftp_login_cmd = "tftp  " + to_host
-        if cmd is "":
+        if cmd == "":
             cmd = "get"
         tftp_cmd = cmd + " " + tftp_file
         self.log.info("Executing tftp " + to_host)
