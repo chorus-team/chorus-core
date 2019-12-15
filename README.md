@@ -6,6 +6,8 @@
 
 </div>
 
+![build status](https://github.com/chorus-team/chorus-core/workflows/build/badge.svg)
+
 ## What is Chorus
 
 **Chorus** is an felxible framework targets to network device test automation. It can be extended in many ways including testcase, device behaviour, control methods, topology representation etc.
