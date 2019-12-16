@@ -110,7 +110,7 @@ CHORUS_EXTENSION_PATH = os.path.join("etc", "chorus", EXTENSION_FOLDER)
 
 ##############################################
 # Config class
-class Config():
+class Config(metaclass=Singleton):
     """Global config class"""
     __metaclass__ = Singleton
 
