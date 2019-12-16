@@ -15,6 +15,7 @@ import pexpect
 import re
 import traceback
 import requests
+import json
 # pylint: disable=no-member
 requests.packages.urllib3.disable_warnings()
 
@@ -483,6 +484,11 @@ class RestConnection(Connection):
         if "json" in args:
             if args["json"]:
                 self.set_content_type("application/json")
+        if "params" in args:
+            # do not change string value due to extra quotation marks
+            for p in args["params"]:
+                if not isinstance(args["params"][p], str):
+                    args["params"][p] = json.dumps(args["params"][p], separators=(',', ':'))
         try:
             if self.use_session:
                 self.session.verify = self.ssl_verify

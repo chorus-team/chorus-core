@@ -107,7 +107,7 @@ class Topo(object):
             implemented in subclasses"""
         self.log.info("> Initializing topology %s", self.name)
         # set user arguments from here
-        for k in self.dict:
+        for k in list(self.dict):
             if k.startswith("x_"):
                 self.x_args[k] = self.dict[k]
                 del(self.dict[k])
