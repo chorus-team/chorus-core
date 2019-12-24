@@ -84,7 +84,7 @@ class BasicLogger(object):
         self.log_prefix = os.path.join(path, 'chorus_' + Config().get_uuid())
         self.logpath = self.log_prefix + self.EXTENSION
         # file log output handler
-        fh = logging.FileHandler(self.logpath)
+        fh = logging.FileHandler(self.logpath, encoding='utf-8')
         fh.setLevel(logging.DEBUG)
         fh.setFormatter(self.formatter)
         self._loggers["root"].addHandler(fh)
@@ -102,7 +102,7 @@ class BasicLogger(object):
             return
         logpath = self.getLogFile(tag)
         # file log output handler
-        fh = logging.FileHandler(logpath)
+        fh = logging.FileHandler(logpath, encoding='utf-8')
         fh.setLevel(logging.DEBUG)
         fh.setFormatter(self.formatter)
         self._loggers["root"].addHandler(fh)
@@ -142,7 +142,7 @@ class BasicLogger(object):
             os.mkdir(self.log_prefix)
         filename = os.path.join(self.log_prefix, tag + ".csv")
         try:
-            with open(filename, 'w+') as fd:
+            with open(filename, 'w+', encoding='utf-8') as fd:
                 writer = csv.DictWriter(fd, fieldnames=cols)
                 writer.writeheader()
                 writer.writerows(data_list)

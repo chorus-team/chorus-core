@@ -174,7 +174,7 @@ class PexpectConnection(Connection):
                     use_poll=True)
         lp = getLogPrefix()
         if lp != "":
-            fout = open(lp + self.name + '.exp', 'a+')
+            fout = open(lp + self.name + '.exp', 'a+', encoding='utf-8')
             self._exp.logfile = fout
         self._opened = True
 
